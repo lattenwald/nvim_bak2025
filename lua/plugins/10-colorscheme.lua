@@ -4,9 +4,11 @@ return {
         lazy = false,
         config = function()
             vim.g.sonokai_disable_italic_comment = 1
-            vim.g.sonokai_style = "default"
-            vim.cmd("colorscheme sonokai")
+            vim.g.sonokai_style = "andromeda"
         end,
+    },
+    {
+        "sainnhe/gruvbox-material",
     },
     {
         "marko-cerovac/material.nvim",
