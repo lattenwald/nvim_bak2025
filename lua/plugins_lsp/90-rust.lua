@@ -9,8 +9,9 @@ return {
                 return {
                     server = {
                         capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                        on_attach = function(_client, bufnr)
+                        on_attach = function(client, bufnr)
                             print("rustaceanvim attached!")
+                            require("nvim-navic").attach(client, bufnr)
                             -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                             vim.keymap.set("n", "<leader>R", function()
                                 vim.cmd.RustLsp("reloadWorkspace")
@@ -28,6 +29,13 @@ return {
                             vim.keymap.set("n", "<C-S-f5>", function()
                                 vim.cmd.RustLsp({ "debug", bang = true })
                             end, { silent = true, buffer = bufnr, desc = "RustLsp debug!" })
+                            vim.keymap.set({ "n", "v" }, "<leader>D", function()
+                                vim.cmd.RustLsp({ "renderDiagnostic", "current" })
+                            end, {
+                                silent = true,
+                                buffer = bufnr,
+                                desc = "RustLsp renderDiagnostic",
+                            })
                         end,
                     },
                     dap = {

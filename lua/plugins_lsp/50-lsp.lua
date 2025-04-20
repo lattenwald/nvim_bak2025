@@ -61,6 +61,10 @@ return {
         "nanotee/sqls.nvim",
     },
     {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig",
+    },
+    {
         "neovim/nvim-lspconfig",
         branch = "master",
         version = nil,
@@ -110,13 +114,16 @@ return {
                 on_attach = function(client, bufnr)
                     client.server_capabilities.documentFormattingProvider = false
                     require("sqls").on_attach(client, bufnr)
+                    require("nvim-navic").attach(client, bufnr)
                 end,
             })
 
             local servers = { "erlangls", "elixirls", "ansiblels", "gopls", "ruff", "texlab", "clangd", "ts_ls" }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({
-                    -- on_attach = on_attach,
+                    on_attach = function(client, bufnr)
+                        require("nvim-navic").attach(client, bufnr)
+                    end,
                     capabilites = cmp_capabilities,
                 })
             end
