@@ -118,12 +118,19 @@ return {
                 end,
             })
 
-            local servers = { "erlangls", "elixirls", "ansiblels", "gopls", "ruff", "texlab", "clangd", "ts_ls" }
+            local servers = { "erlangls", "elixirls", "ansiblels", "gopls", "texlab", "clangd", "ts_ls" }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({
                     on_attach = function(client, bufnr)
                         require("nvim-navic").attach(client, bufnr)
                     end,
+                    capabilites = cmp_capabilities,
+                })
+            end
+
+            local servers_wo_docsymbols = { "ruff" }
+            for _, lsp in ipairs(servers_wo_docsymbols) do
+                lspconfig[lsp].setup({
                     capabilites = cmp_capabilities,
                 })
             end
