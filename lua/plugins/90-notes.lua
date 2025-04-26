@@ -20,19 +20,19 @@ return {
             },
         },
         keys = {
-            { "<leader>wi", ':lua require("kiwi").open_wiki_index()<cr>', desc = "Open Wiki index" },
-            { "<leader>x", ':lua require("kiwi").todo.toggle()<cr>', desc = "Toggle checkbox" },
+            { "<leader>wi", ':lua require("kiwi").open_wiki_index()<enter>', desc = "Open Wiki index" },
+            { "<leader>x", ':lua require("kiwi").todo.toggle()<enter>', desc = "Toggle checkbox" },
             {
                 "<leader>ww",
-                ':lua require("kiwi").open_wiki_index("vimwiki")<cr>',
+                ':lua require("kiwi").open_wiki_index("vimwiki")<enter>',
                 desc = "Open index of vimwiki",
             },
             {
                 "<leader>wp",
-                ':lua require("kiwi").open_wiki_index("personal")<cr>',
+                ':lua require("kiwi").open_wiki_index("personal")<enter>',
                 desc = "Open index of personal wiki",
             },
-            { "T", ':lua require("kiwi").todo.toggle()<cr>', desc = "Toggle Markdown Task" },
+            { "T", ':lua require("kiwi").todo.toggle()<enter>', desc = "Toggle Markdown Task" },
         },
         lazy = true,
     },
@@ -71,7 +71,7 @@ return {
             -- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
             vim.keymap.set("n", "gf", function()
                 if require("obsidian").util.cursor_on_markdown_link() then
-                    return "<cmd>ObsidianFollowLink<CR>"
+                    return "<cmd>ObsidianFollowLink<enter>"
                 else
                     return "gf"
                 end

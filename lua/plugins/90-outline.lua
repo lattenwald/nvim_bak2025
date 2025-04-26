@@ -16,7 +16,7 @@ return {
                     -- vimwiki = {"markdown"},
                 },
             })
-            vim.keymap.set("n", "<leader>V", "<cmd>AerialToggle<cr>", { desc = "Toggle code outline" })
+            vim.keymap.set("n", "<leader>V", "<cmd>AerialToggle<enter>", { desc = "Toggle code outline" })
         end,
     },
     {
@@ -25,7 +25,7 @@ return {
         opts = {},
         config = function()
             require("symbols-outline").setup()
-            vim.keymap.set("n", "<leader>V", "<cmd>SymbolsOutline<cr>", { desc = "Toggle code outline" })
+            vim.keymap.set("n", "<leader>V", "<cmd>SymbolsOutline<enter>", { desc = "Toggle code outline" })
         end,
     },
     {

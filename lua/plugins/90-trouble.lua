@@ -2,7 +2,7 @@ return {
     {
         "folke/trouble.nvim",
         opts = {},
-        cmd = "Trouble",
+        -- cmd = "Trouble",
         config = function()
             local trouble = require("trouble")
             vim.keymap.set({ "n", "v" }, "<leader>q", function()

@@ -19,8 +19,8 @@ return {
                     path_display = { shorten = { len = 1, exclude = { -1, -2 } } },
                     mappings = {
                         i = {
-                            ["<c-cr>"] = "select_tab",
-                            ["<s-cr>"] = "select_vertical",
+                            ["<c-enter>"] = "select_tab",
+                            ["<s-enter>"] = "select_vertical",
                             ["<c-c>"] = "close",
                             ["<c-t>"] = open_with_trouble,
                             ["<c-s-t>"] = add_to_trouble,
@@ -28,8 +28,8 @@ return {
                             ["<s-down>"] = "preview_scrolling_down",
                         },
                         n = {
-                            ["<c-cr>"] = "select_tab",
-                            ["<s-cr>"] = "select_vertical",
+                            ["<c-enter>"] = "select_tab",
+                            ["<s-enter>"] = "select_vertical",
                             ["<esc>"] = "close",
                             ["q"] = "close",
                             ["<c-t>"] = open_with_trouble,
@@ -100,7 +100,7 @@ return {
                 builtin.grep_string({ glob_pattern = vim.fn.expand("%") })
             end, { desc = "Find string under cursor in current file" })
 
-            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "undo tree" })
+            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<enter>", { desc = "undo tree" })
         end,
     },
     {

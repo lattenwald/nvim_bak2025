@@ -6,25 +6,25 @@ return {
             -- 👇 in this section, choose your own keymappings!
             {
                 "<leader>-",
-                "<cmd>Yazi<cr>",
+                "<cmd>Yazi<enter>",
                 desc = "Open yazi at the current file",
             },
             {
                 "<leader>z",
-                "<cmd>Yazi<cr>",
+                "<cmd>Yazi<enter>",
                 desc = "Open yazi at the current file",
             },
             {
                 -- Open in the current working directory
                 "<leader>cw",
-                "<cmd>Yazi cwd<cr>",
+                "<cmd>Yazi cwd<enter>",
                 desc = "Open the file manager in nvim's working directory",
             },
             {
                 -- NOTE: this requires a version of yazi that includes
                 -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
                 "<c-up>",
-                "<cmd>Yazi toggle<cr>",
+                "<cmd>Yazi toggle<enter>",
                 desc = "Resume the last yazi session",
             },
         },
@@ -55,7 +55,7 @@ return {
             },
             on_attach = function(bufnr)
                 local api = require("nvim-tree.api")
-                vim.keymap.set("n", "<c-cr>", api.node.open.tab_drop, { desc = "Open node in new tab" })
+                vim.keymap.set("n", "<c-enter>", api.node.open.tab_drop, { desc = "Open node in new tab" })
 
                 api.config.mappings.default_on_attach(bufnr)
             end,
@@ -67,7 +67,7 @@ return {
             nvim_tree.disable_netrw = false
             nvim_tree.hijack_netrw = true
 
-            vim.keymap.set("n", "<C-f>", "<cmd>NvimTreeToggle<cr>", { desc = "NvimTree toggle" })
+            vim.keymap.set("n", "<C-f>", "<cmd>NvimTreeToggle<enter>", { desc = "NvimTree toggle" })
         end,
     },
     {

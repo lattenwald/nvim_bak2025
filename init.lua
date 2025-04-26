@@ -73,18 +73,18 @@ vim.o.expandtab = true
 vim.o.scl = "yes:1"
 
 vim.o.number = true
-vim.api.nvim_set_keymap("n", "<C-N>", ":set number!<cr>", { desc = "Toggle line numbers" })
-vim.api.nvim_set_keymap("i", "<C-N>", "<esc>:set number!<cr>i", { desc = "Toggle line numbers" })
+vim.api.nvim_set_keymap("n", "<C-N>", ":set number!<enter>", { desc = "Toggle line numbers" })
+vim.api.nvim_set_keymap("i", "<C-N>", "<esc>:set number!<enter>i", { desc = "Toggle line numbers" })
 
 -- show tabs and trailing spaces
 vim.o.listchars = "tab:→ ,trail:·"
 vim.o.list = true
-vim.api.nvim_set_keymap("n", "<C-P>", ":set list!<cr>", { desc = "Toggle show whitespaces" })
-vim.api.nvim_set_keymap("i", "<C-P>", "<esc>:set list!<cr>i", { desc = "Toggle show whitespaces" })
+vim.api.nvim_set_keymap("n", "<C-P>", ":set list!<enter>", { desc = "Toggle show whitespaces" })
+vim.api.nvim_set_keymap("i", "<C-P>", "<esc>:set list!<enter>i", { desc = "Toggle show whitespaces" })
 -- TODO show list status in statusline
 
 -- chdir
-vim.api.nvim_set_keymap("n", "<leader>cd", ":cd %:p:h<cr>:pwd<cr>", { desc = "Change dir to current file" })
+vim.api.nvim_set_keymap("n", "<leader>cd", ":cd %:p:h<enter>:pwd<enter>", { desc = "Change dir to current file" })
 vim.api.nvim_create_autocmd("BufEnter", { command = [[silent! lcd %:p:h]] })
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
@@ -101,14 +101,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_set_keymap("c", "<S-Insert>", "<C-R>+", { desc = "Insert from buffer in command mode" })
 
 -- move tabs
--- vim.api.nvim_set_keymap("n", "<C-S-PageDown>", ":tabmove +1<cr>", { desc = "Move tab right" })
--- vim.api.nvim_set_keymap("n", "<C-S-PageUp>", ":tabmove -1<cr>", { desc = "Move tab left" })
+-- vim.api.nvim_set_keymap("n", "<C-S-PageDown>", ":tabmove +1<enter>", { desc = "Move tab right" })
+-- vim.api.nvim_set_keymap("n", "<C-S-PageUp>", ":tabmove -1<enter>", { desc = "Move tab left" })
 
 -- move between windows
-vim.keymap.set({ "n", "t" }, "<M-left>", "<Cmd>wincmd h<CR>", { desc = "Go to left window" })
-vim.keymap.set({ "n", "t" }, "<M-right>", "<Cmd>wincmd l<CR>", { desc = "Go to right window" })
-vim.keymap.set({ "n", "t" }, "<M-up>", "<Cmd>wincmd k<CR>", { desc = "Go to top window" })
-vim.keymap.set({ "n", "t" }, "<M-down>", "<Cmd>wincmd j<CR>", { desc = "Go to bottom window" })
+vim.keymap.set({ "n", "t" }, "<M-left>", "<Cmd>wincmd h<enter>", { desc = "Go to left window" })
+vim.keymap.set({ "n", "t" }, "<M-right>", "<Cmd>wincmd l<enter>", { desc = "Go to right window" })
+vim.keymap.set({ "n", "t" }, "<M-up>", "<Cmd>wincmd k<enter>", { desc = "Go to top window" })
+vim.keymap.set({ "n", "t" }, "<M-down>", "<Cmd>wincmd j<enter>", { desc = "Go to bottom window" })
 
 -- lsp keybindings
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { silent = true, desc = "Go to next diagnostic" })
@@ -153,4 +153,4 @@ vim.g.neovide_scroll_animation_length = 0.1
 
 vim.o.mouse = "a"
 
-vim.cmd('colorscheme tokyonight-night')
+vim.cmd("colorscheme tokyonight-night")

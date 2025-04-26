@@ -45,8 +45,8 @@ return {
         config = function(_, opts)
             require("tabby").setup(opts)
             -- move tabs
-            vim.api.nvim_set_keymap("n", "<C-S-PageDown>", ":tabmove +1<cr>", { desc = "Move tab right" })
-            vim.api.nvim_set_keymap("n", "<C-S-PageUp>", ":tabmove -1<cr>", { desc = "Move tab left" })
+            vim.api.nvim_set_keymap("n", "<C-S-PageDown>", ":tabmove +1<enter>", { desc = "Move tab right" })
+            vim.api.nvim_set_keymap("n", "<C-S-PageUp>", ":tabmove -1<enter>", { desc = "Move tab left" })
 
             local function get_diagnostic_counts(bufnr)
                 local diagnostics = vim.diagnostic.get(bufnr)

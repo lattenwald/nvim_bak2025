@@ -167,31 +167,31 @@ return {
                     vim.keymap.set(
                         "n",
                         "<leader>d",
-                        "<cmd>Lspsaga hover_doc<cr>",
+                        "<cmd>Lspsaga hover_doc<enter>",
                         { desc = "LSP hover doc", buffer = true }
                     )
                     vim.keymap.set(
                         "n",
                         "gD",
-                        "<cmd>Lspsaga peek_definition<cr>",
+                        "<cmd>Lspsaga peek_definition<enter>",
                         { desc = "LSP peek definition", buffer = true }
                     )
                     vim.keymap.set(
                         "n",
                         "gT",
-                        "<cmd>Lspsaga peek_type_definition<cr>",
+                        "<cmd>Lspsaga peek_type_definition<enter>",
                         { desc = "LSP peek type definition", buffer = true }
                     )
                     vim.keymap.set(
                         "n",
                         "<leader>v",
-                        "<cmd>Lspsaga outline<cr>",
+                        "<cmd>Lspsaga outline<enter>",
                         { desc = "LSP outline", buffer = true }
                     )
                     vim.keymap.set(
                         "n",
                         "<leader>Q",
-                        "<cmd>Lspsaga show_workspace_diagnostics<cr>",
+                        "<cmd>Lspsaga show_workspace_diagnostics<enter>",
                         { desc = "LSP diagnostics", buffer = true }
                     )
 
@@ -310,7 +310,7 @@ return {
         opts = {
             outline = {
                 keys = {
-                    toggle_or_jump = "<cr>",
+                    toggle_or_jump = "<enter>",
                 },
             },
             lightbulb = {
@@ -339,9 +339,9 @@ return {
         -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
         keys = {
             -- Keymap to open VenvSelector to pick a venv.
-            { "<leader>vs", "<cmd>VenvSelect<cr>" },
+            { "<leader>vs", "<cmd>VenvSelect<enter>" },
             -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-            { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+            { "<leader>vc", "<cmd>VenvSelectCached<enter>" },
         },
     },
 }

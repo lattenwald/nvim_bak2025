@@ -29,7 +29,7 @@ return {
             vim.api.nvim_set_keymap(
                 "n",
                 "<leader>m",
-                "<Cmd>Noice telescope<CR><Esc>",
+                "<Cmd>Noice telescope<enter><Esc>",
                 { desc = "Show notices history" }
             )
         end,

@@ -5,25 +5,30 @@ return {
         cmd = "Copilot",
         opts = {
             suggestion = {
+                enabled = false,
                 auto_trigger = true,
                 keymap = {
-                    accept = "<c-return>",
+                    accept = "<c-enter>",
                 },
+            },
+            panel = {
+                -- enabled = false,
+                auto_refresh = true,
+            },
+            workspace_folders = {
+                "/home/qalex/projects/",
+                "/home/qalex/kribrum/",
+                "/home/qalex/krapiva/",
             },
         },
     },
     {
         "zbirenbaum/copilot-cmp",
-        disabled = true,
+        -- enabled = false,
         opts = {
             filetypes = {
                 yaml = true,
                 markdown = true,
-            },
-            workspace_folder = {
-                "/home/qalex/projects/",
-                "/home/qalex/kribrum/",
-                "/home/qalex/krapiva/",
             },
         },
     },
@@ -40,7 +45,7 @@ return {
             vim.keymap.set("i", "<c-tab>", function()
                 return vim.fn["codeium#Accept"]()
             end, { expr = true, silent = true })
-            vim.keymap.set("i", "<c-return>", function()
+            vim.keymap.set("i", "<c-enter>", function()
                 return vim.fn["codeium#Accept"]()
             end, { expr = true, silent = true })
             vim.keymap.set("i", "<c-;>", function()

@@ -18,18 +18,19 @@ return {
                     end,
                 },
                 sources = require("cmp").config.sources({
-                    { name = "nvim_lsp" },
                     { name = "copilot" },
+                    { name = "nvim_lsp" },
                     { name = "cmp_r" },
                     { name = "vsnip" },
                     { name = "path" },
-                    { name = "buffer", group_index = 2 },
+                    { name = "buffer" },
                 }),
                 mapping = {
                     ["<up>"] = cmp.mapping.select_prev_item(),
                     ["<down>"] = cmp.mapping.select_next_item(),
                     ["<tab>"] = cmp.mapping.confirm({ select = true }),
-                    ["<cr>"] = cmp.mapping.confirm(),
+                    ["<c-enbter>"] = cmp.mapping.confirm({ select = true }),
+                    ["<enter>"] = cmp.mapping.confirm(),
                     ["<esc>"] = function()
                         cmp.abort()
                         vim.cmd("stopinsert")

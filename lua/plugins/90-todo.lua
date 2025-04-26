@@ -24,13 +24,13 @@ return {
             vim.keymap.set(
                 "n",
                 "<leader>t",
-                "<cmd>TodoTrouble<cr>",
+                "<cmd>TodoTrouble<enter>",
                 { silent = true, desc = "Show TODOs in Trouble list" }
             )
             vim.keymap.set(
                 "n",
                 "<leader>T",
-                "<cmd>TodoTelescope<cr>",
+                "<cmd>TodoTelescope<enter>",
                 { silent = true, desc = "Show TODOs in Telescope picker" }
             )
         end,
