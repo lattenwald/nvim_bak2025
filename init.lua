@@ -45,7 +45,7 @@ require("lazy").setup({
             cond = vim.fn.filereadable(vim.fn.stdpath("config") .. "/load-lsp") == 1,
         },
     },
-    checker = { enabled = true },
+    checker = { enabled = false },
 })
 
 -- command-line completion
