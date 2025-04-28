@@ -88,6 +88,7 @@ return {
                                 line.sep("", hl, theme.fill),
                                 tab.is_current() and "" or "󰆣",
                                 tab.number(),
+                                tab.name(),
                                 line.sep("", hl, theme.fill),
                                 hl = hl,
                                 margin = " ",
