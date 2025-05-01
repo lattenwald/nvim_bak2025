@@ -23,9 +23,6 @@ return {
         },
     },
     {
-        "fang2hou/blink-copilot",
-    },
-    {
         "Exafunction/codeium.vim",
         lazy = true,
         cmd = "Codeium",

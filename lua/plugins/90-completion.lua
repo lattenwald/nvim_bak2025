@@ -5,6 +5,7 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets",
             "Kaiser-Yang/blink-cmp-avante",
+            "fang2hou/blink-copilot",
         },
 
         version = "*",
@@ -48,7 +49,7 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { "avante", "lsp", "path", "snippets", "buffer" },
+                default = { "avante", "copilot", "lsp", "path", "snippets", "buffer" },
                 providers = {
                     avante = {
                         module = "blink-cmp-avante",
@@ -56,6 +57,12 @@ return {
                         opts = {
                             -- options for blink-cmp-avante
                         },
+                    },
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-copilot",
+                        score_offset = 100,
+                        async = true,
                     },
                 },
             },
