@@ -45,8 +45,8 @@ return {
                 perl = { "perlnavigator" },
             }
             local ensure_installed = opts.ensure_installed
-            for prereq, dependencies in pairs(deps) do
-                if vim.fn.executable(prereq) == 1 then
+            for group, dependencies in pairs(deps) do
+                if should_enable(group) then
                     for _, dep in ipairs(dependencies) do
                         if not vim.tbl_contains(ensure_installed, dep) then
                             table.insert(ensure_installed, dep)
@@ -78,11 +78,9 @@ return {
             require("mason-lspconfig").setup()
 
             local lspconfig = require("lspconfig")
-            local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- TODO incorporate current code location in statusline
             lspconfig.basedpyright.setup({
-                capabilities = cmp_capabilities,
                 settings = {
                     basedpyright = {
                         typeCheckingMode = "standard",
@@ -96,18 +94,6 @@ return {
                         includePaths = { "~/perl5/lib/perl5" },
                     },
                 },
-            })
-
-            lspconfig.markdown_oxide.setup({
-                -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
-                -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
-                capabilities = vim.tbl_deep_extend("force", cmp_capabilities, {
-                    workspace = {
-                        didChangeWatchedFiles = {
-                            dynamicRegistration = true,
-                        },
-                    },
-                }),
             })
 
             lspconfig.sqls.setup({
@@ -124,14 +110,6 @@ return {
                     on_attach = function(client, bufnr)
                         require("nvim-navic").attach(client, bufnr)
                     end,
-                    capabilites = cmp_capabilities,
-                })
-            end
-
-            local servers_wo_docsymbols = { "ruff" }
-            for _, lsp in ipairs(servers_wo_docsymbols) do
-                lspconfig[lsp].setup({
-                    capabilites = cmp_capabilities,
                 })
             end
 
@@ -204,14 +182,6 @@ return {
                     end, { buffer = true, desc = "Format buffer" })
                 end,
             })
-        end,
-    },
-    {
-        "mfussenegger/nvim-dap-python",
-        lazy = true,
-        ft = "python",
-        config = function()
-            require("dap-python").setup("/usr/bin/python")
         end,
     },
     {
@@ -316,32 +286,6 @@ return {
             lightbulb = {
                 enable = false,
             },
-        },
-    },
-    {
-        "linux-cultist/venv-selector.nvim",
-        branch = "regexp",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "nvim-telescope/telescope.nvim",
-            "mfussenegger/nvim-dap-python",
-        },
-        opts = {
-            search = {
-                project_venvs = {
-                    command = "fd -I 'python$' ~/projects/venvs --full-path",
-                },
-                hatch_venvs = {
-                    command = "fd -I 'python$' ~/.config/hatch/env --full-path",
-                },
-            },
-        },
-        -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-        keys = {
-            -- Keymap to open VenvSelector to pick a venv.
-            { "<leader>vs", "<cmd>VenvSelect<enter>" },
-            -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-            { "<leader>vc", "<cmd>VenvSelectCached<enter>" },
         },
     },
 }

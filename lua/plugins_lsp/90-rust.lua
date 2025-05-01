@@ -8,7 +8,6 @@ return {
                 local cfg = require("rustaceanvim.config")
                 return {
                     server = {
-                        capabilities = require("cmp_nvim_lsp").default_capabilities(),
                         on_attach = function(client, bufnr)
                             print("rustaceanvim attached!")
                             require("nvim-navic").attach(client, bufnr)

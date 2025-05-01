@@ -38,6 +38,7 @@ return {
     },
     {
         "epwalsh/obsidian.nvim",
+        enabled = false,
         lazy = true,
         event = { "BufReadPre ~/cloud/obsidian/**.md" },
         opts = {

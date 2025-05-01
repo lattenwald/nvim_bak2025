@@ -30,6 +30,32 @@ function current_repo_name()
     return vim.fs.basename(repo_dir)
 end
 
+local config_path = vim.fn.expand("~/.config/nvim/lua/plugins_config.lua")
+local config = {}
+
+local config_file = io.open(config_path, "r")
+if config_file then
+    config = require("plugins_config")
+    config_file:close()
+else
+    vim.notify("plugins_config.lua not found. Using default empty configuration.", vim.log.levels.WARN)
+end
+
+function should_enable(plugin_group)
+    if config[plugin_group] == nil then
+        return true -- Group not defined, load by default
+    elseif type(config[plugin_group]) == "boolean" then
+        return config[plugin_group]
+    elseif type(config[plugin_group]) == "table" then
+        local executable = config[plugin_group]["executable"]
+        if config[plugin_group]["enabled"] and (executable == nil or vim.fn.executable(executable) == 1) then
+            return true
+        end
+        return false
+    end
+    return false -- Default to not loading if the value is unexpected
+end
+
 require("lazy").setup({
     defaults = {
         version = "*",
